@@ -1,0 +1,29 @@
+{% extends "products/base.html" %}
+{% load bootstrap3 %} 
+{% block content %}
+<div class="row">
+    <div class="col-md-6 col-md-offset-3">
+        <h1>Login Page</h1>
+        <h2>Next: {{ next }} </h2>
+        <h1>Accounts</h1>
+        
+
+        {% if next %}
+            {% if request.user.is_authenticated %}
+            <p>Your account doesn't have access to this page. To proceed,
+            please login with an account that has access.</p>
+            {% else %}
+            <p>Please login to see this page.</p>
+            {% endif %}
+        {% endif %}
+        <form method="post">
+            {% csrf_token %}
+            {% bootstrap_form form %}
+            {% bootstrap_button "Login" button_type="submit" button_class="btn-primary" size="large" %}
+
+            <!-- I found the page working without this -->
+            <input type="hidden" name="next" value="{{ next }}" />
+        </form>
+    </div>
+</div>
+{% endblock content %}

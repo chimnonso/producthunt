@@ -1,0 +1,34 @@
+
+body{
+    padding-top: 50px;
+}
+
+h1,p{
+    margin: 0;
+}
+
+.navbar{
+    margin-bottom: 0;
+    border-bottom: 0;
+}
+.detail-banner{
+    height: 80vh;
+    margin-left: -15px;
+    margin-right: -15px;
+    margin-bottom: 30px;
+}
+
+.detail-banner-text{
+    width: 50%;
+    margin: 0 auto;
+    padding-top: 20%;
+}
+
+.row{
+    overflow: hidden; 
+}
+
+div[class*="col-"]{
+    margin-bottom: -99999px;
+    padding-bottom: 99999px;
+}

@@ -1,0 +1,13 @@
+{% extends "products/base.html" %}
+{% block content %}
+<h2>{{ user.username }}</h2>
+
+{% for product in user.my_products.all %}
+<ul>
+    <li><a href="{% url 'products:detail' product.slug %}">{{ product.title }}</a></li>
+    <p>{{ product.vote.count }} vote{{ product.vote.count|pluralize }}</p>
+</ul>
+{% empty %}
+
+{% endfor %}
+{% endblock content %}

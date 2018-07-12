@@ -1,0 +1,27 @@
+{% extends "products/base.html" %}
+{% load bootstrap3 %}
+{% block content %}
+<div class="detail-banner" style="background: url({{product.image.url}})">
+    <div class="detail-banner-text">
+        <h1 class="text-center">{{ product.title }}</h1>
+    </div>
+</div>
+<div class="row">
+    <!-- <div class="col-md-6 col-md-offset-2">
+        {{ product.body }}
+    </div> -->
+    {% if not request.user.is_authenticated %}
+    <div class="col-md-12">
+        <button class="btn btn-warning btn-block btn-upvote"
+                data-prodid="{{ product.id }}"
+                {% if hasvoted %} disabled {% endif %}>
+                <span class="badge upvote_count">{{ product.vote.count }}</span>
+                Upvote
+        </button>
+    </div>
+    {% else %}
+    <p>Please sign in</p>
+    {% endif %}
+    
+</div>
+{% endblock content %}

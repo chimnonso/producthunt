@@ -1,0 +1,27 @@
+{% extends "products/base.html" %}
+{% load bootstrap3 %}
+{% block content %}
+<div class="container">
+    <div class="row">
+    {% for product in object_list %}
+    <div class="col-sm-6 col-md-4">
+            <div class="thumbnail">
+                <img src="{{ product.image.url }}" alt="">
+                <div class="caption">
+                  <h3>{{ product.title}}{{product.pk}}</h3>
+                  <p>{{ product.short_body }}</p>
+                    <p>
+                        <a href="{% url 'products:detail' slug=product.slug %}" class="btn btn-primary">Read More &raquo;</a>
+                        <a href="{% url 'products:userproducts' product.hunter.id product.hunter.username %}"><span class="label label-info pull-right">{{ product.hunter }}</span></a>
+                        <!-- <a href="{% url 'accounts:userdetail' product.hunter.pk %"><span class="label label-info pull-right">{{ product.hunter }}</span></a> -->
+                    </p>
+                </div> 
+            </div>
+        </div>
+    {% empty %}
+        <p>EMpty</p>    
+    {% endfor %} 
+    </div>
+</div>
+
+{% endblock content %}

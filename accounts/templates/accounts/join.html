@@ -1,0 +1,14 @@
+{% extends "products/base.html" %}
+{% load bootstrap3 %}
+{% block content %}
+<div class="row">
+    <div class="col-md-6 col-md-offset-3">
+        <h1>Signup Pagesssss</h1>
+        <form method="post">
+            {% csrf_token %}
+            {% bootstrap_form form %}
+            {% bootstrap_button "Register" button_type="submit" button_class="btn-primary" size="large" %}
+        </form>
+    </div>
+</div>
+{% endblock content %}
